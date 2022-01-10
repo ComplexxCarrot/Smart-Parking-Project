@@ -15,44 +15,12 @@
   <title>Smart Parking Prototype</title>
   <meta name="description" content="Description Goes Here">
   <link rel="stylesheet" href="style.css">
+  <link rel="script" href="script.js">
 </head>
 <body>
     <div class="a"><h1>Parking Slot Available: <span id="result"></span></h1></div>
     <div class="a"><h1>Parking Slot 1: <span id="ps1"></span></h1></div>
     <div class="a"><h1>Parking Slot 2: <span id="ps2"></span></h1></div>
     <div class="a"><h1>Parking Slot 3: <span id="ps3"></span></h1></div>
-
-    <!-- Do not touch the script / Jangan sentuh script nya-->
-    <script>
-        (function(){
-            var config = {
-                apiKey: "AIzaSyAV7tgH9vapwlqORsgEg6D439YN0DRSVmw",
-                authDomain: "smartparking-d344e.firebaseapp.com",
-                databaseURL: "https://smartparking-d344e-default-rtdb.asia-southeast1.firebasedatabase.app",
-                projectId: "smartparking-d344e",
-                storageBucket: "smartparking-d344e.appspot.com",
-                messagingSenderId: "384686314441",
-                appId: "1:384686314441:web:8bee8e14d674bc8afd4e18"
-            };
-            firebase.initializeApp(config);
-
-            const result = document.getElementByID('result');
-            const dbRefObject = firebase.database().ref().child('Parking Slot Available');
-            dbRefObject.on('value', snap => result.innerText = snap.val());
-
-            const ps1= document.getElementByID('ps1');
-            const dbRefps1 = firebase.database().ref().child('message1');
-            dbRefps1.on('value', snap => ps1.innerText = snap.val());
-
-            const ps2= document.getElementByID('ps2');
-            const dbRefps2 = firebase.database().ref().child('message2');
-            dbRefps2.on('value', snap => ps2.innerText = snap.val());
-
-            const ps3= document.getElementByID('ps3');
-            const dbRefps3 = firebase.database().ref().child('message3');
-            dbRefps3.on('value', snap => ps3.innerText = snap.val());
-
-        }())
-    </script>
 </body>
 </html>
