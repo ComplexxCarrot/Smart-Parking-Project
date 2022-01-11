@@ -1,26 +1,63 @@
-<!doctype html>
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
   <meta charset="utf-8">
-    <!-- Firebase App is always required and must be first -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-
-    <!-- Add additional services that you want to use -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-messaging.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-functions.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-messaging.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-functions.js"></script>
 
   <title>Smart Parking Prototype</title>
-  <meta name="description" content="Description Goes Here">
-  <link rel="stylesheet" href="style.css">
-  <link rel="script" href="script.js">
+  <style>
+    body{
+      background-color: aquamarine;
+    }
+    div.a{
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
-    <div class="a"><h1>Parking Slot Available: <span id="result"></span></h1></div>
-    <div class="a"><h1>Parking Slot 1: <span id="ps1"></span></h1></div>
-    <div class="a"><h1>Parking Slot 2: <span id="ps2"></span></h1></div>
-    <div class="a"><h1>Parking Slot 3: <span id="ps3"></span></h1></div>
+  <div class="a"><h1 style="color:blue">Parking slot available: <span id="result" style="color:red"></span></h1></div>
+  <div class="a"><h1 style="color:blue">parking slot 1: <span id="ps1" style="color:green"></span></h1></div>
+  <div class="a"><h1 style="color:blue">parking slot 2: <span id="ps2" style="color:green"></span></h1></div>
+  <div class="a"><h1 style="color:blue">parking slot 3: <span id="ps3" style="color:green"></span></h1></div>
+  <script>
+    (function(){
+      // configure firebase
+      var config = {
+        apiKey: "AIzaSyA8FnmWkdtP-lCCeZwnCOxWgnP0txHPp-U",
+        authDomain: "carrotkun-smart-parking.firebaseapp.com",
+        databaseURL: "https://carrotkun-smart-parking-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "carrotkun-smart-parking",
+        storageBucket: "carrotkun-smart-parking.appspot.com",
+        messagingSenderId: "882930562235",
+        appId: "1:882930562235:web:ffd3e342ddd1404f53e59e"
+      };
+    
+      // Initialize Firebase
+      firebase.initializeApp(config);
+
+      var result = document.getElementById('result');
+      var dbRefObject = firebase.database().ref().child('Parking slot available');
+      dbRefObject.on('value', snap => result.innerText = snap.val());
+
+      var ps1= document.getElementById('ps1');
+      var dbRefps1 = firebase.database().ref().child('message1');
+      dbRefps1.on('value', snap => ps1.innerText = snap.val());
+
+      var ps2= document.getElementById('ps2');
+      var dbRefps2 = firebase.database().ref().child('message2');
+      dbRefps2.on('value', snap => ps2.innerText = snap.val());
+
+      var ps3= document.getElementById('ps3');
+      var dbRefps3 = firebase.database().ref().child('message3');
+      dbRefps3.on('value', snap => ps3.innerText = snap.val());
+    }())
+      
+      
+    </script>
 </body>
 </html>
