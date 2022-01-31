@@ -42,27 +42,23 @@ void setup() {
 
 void loop() {
   parkingslot = 3;
-//  currently broken
-//  --------------------
-//  int waktu1, jarak1;
-//  digitalWrite(trigPin1,LOW);delay(10);
-//  digitalWrite(trigPin1,HIGH);delay(10);digitalWrite(trigPin1,LOW);
-//  waktu1 = pulseIn(echoPin1,HIGH); //microsecond
-//  jarak1 = (waktu1/2) / 29.1; // centimeter
-//  Serial.print(jarak1);
-//  Serial.println(" cm1");
-//  delay(100);     
+ int waktu1, jarak1;
+ digitalWrite(trigPin1,LOW);delay(10);
+ digitalWrite(trigPin1,HIGH);delay(10);digitalWrite(trigPin1,LOW);
+ waktu1 = pulseIn(echoPin1,HIGH); //microsecond
+ jarak1 = (waktu1/2) / 29.1; // centimeter
+ Serial.print(jarak1);
+ Serial.println(" cm1");
+ delay(100);     
 
-//  currently broken
-//  --------------------
-//  int waktu2, jarak2;
-//  digitalWrite(trigPin2,LOW);delay(10);
-//  digitalWrite(trigPin2,HIGH);delay(10);digitalWrite(trigPin2,LOW);
-//  waktu2 = pulseIn(echoPin2,HIGH); //microsecond
-//  jarak2 = (waktu2/2) / 29.1; // centimeter
-//  Serial.print(jarak2);
-//  Serial.println(" cm2");
-//  delay(100);
+ int waktu2, jarak2;
+ digitalWrite(trigPin2,LOW);delay(10);
+ digitalWrite(trigPin2,HIGH);delay(10);digitalWrite(trigPin2,LOW);
+ waktu2 = pulseIn(echoPin2,HIGH); //microsecond
+ jarak2 = (waktu2/2) / 29.1; // centimeter
+ Serial.print(jarak2);
+ Serial.println(" cm2");
+ delay(100);
 
   int waktu3, jarak3;
   digitalWrite(trigPin3,LOW);delay(10);
@@ -72,23 +68,20 @@ void loop() {
   Serial.print(jarak3);
   Serial.println(" cm3");
   delay(100);
-
-  Firebase.setString("message1","Empty");
-  Firebase.setString("message2","Empty");
   
-//  if(jarak1 < 15){
-//    parkingslot = parkingslot - 1;
-//    Firebase.setString("message1","Full");
-//  }else{
-//    Firebase.setString("message1","Empty");
-//  }
+ if(jarak1 < 15){
+   parkingslot = parkingslot - 1;
+   Firebase.setString("message1","Full");
+ }else{
+   Firebase.setString("message1","Empty");
+ }
 
-//  if(jarak2 < 15){
-//    parkingslot = parkingslot - 1;
-//    Firebase.setString("message2","Full");
-//  }else{
-//    Firebase.setString("message2","Empty");
-//  }
+ if(jarak2 < 15){
+   parkingslot = parkingslot - 1;
+   Firebase.setString("message2","Full");
+ }else{
+   Firebase.setString("message2","Empty");
+ }
 
   if(jarak3 < 15){
     parkingslot = parkingslot - 1;
